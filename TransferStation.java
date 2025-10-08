@@ -1,1 +1,34 @@
+import java.util.ArrayList;
 
+public class TransferStation extends Station{
+    protected ArrayList<Station> otherStations;
+    
+    public TransferStation(String s, String c){
+        super(s, c);
+        otherStations = new ArrayList<Station>();
+    }
+
+    public void addTransferStationPrev(Station s){
+        otherStations.add(s);
+        s.addNext(this);
+    }
+
+    public void addTransferStationNext(Station s){
+        otherStations.add(s);
+        s.addPrev(this);
+    }
+
+    public String toString(){
+        String output =  "TRANSFERSTATION "+ getName() + ": " + getColor() + "line, in service: " + isAvailable() + ", previous station: " + prevStation + 
+                ", next station: " + next + "\n\tTransfers: \n\t";
+
+                for (Station Transfer : otherStations){
+                    output += "\t" + Transfer.toString() + "\n";
+                }
+
+                return output;
+                // "TRANSFERSTATION Museum: pink line, in service: true, previous station: none, next station: none\n\tTransfers: \n" + 
+                //           "\tSTATION Square: blue line, in service: true, previous station: none, next station: Museum\n" + 
+                //           "\tENDSTATION Plaza: green line, in service: true, previous station: Museum, next station: none\n";
+    }
+}
