@@ -23,7 +23,7 @@ public class Station{
     }
 
     public void addNext(Station s){
-        next = s;
+        this.next = s;
     }
 
     public void addPrev(Station s){
@@ -68,11 +68,11 @@ public class Station{
     }
 
     public int tripLength(Station dest){
-        return recursiveHelper(this, dest, 0);
+        return 0;//recursiveHelper(this, dest, 0);
     }
 
     public String toString(){
-        return "STATION "+ getName() + ": " + getColor() + ", in service: " + isAvailable() + ", previous station: " + prevStation + 
+        return "STATION "+ getName() + ": " + getColor() + "line, in service: " + isAvailable() + ", previous station: " + prevStation + 
                 ", next station: " + next;
         // "STATION Museum: pink line, in service: true, previous station: none, next station: Square";
     }
