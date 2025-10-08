@@ -19,8 +19,19 @@ public class TransferStation extends Station{
     }
 
     public String toString(){
-        String output =  "TRANSFERSTATION "+ getName() + ": " + getColor() + "line, in service: " + isAvailable() + ", previous station: " + prevStation + 
-                ", next station: " + next + "\n\tTransfers: \n\t";
+
+        String prevName = prevStation.getName();
+        String nextName = next.getName();
+
+        if (prevStation == null){
+            prevName = "none";
+        }
+        if (next == null){
+            nextName = "none";
+        }
+
+        String output =  "TRANSFERSTATION "+ getName() + ": " + getColor() + "line, in service: " + isAvailable() + ", previous station: " + prevName + 
+                ", next station: " + nextName + "\n\tTransfers: \n\t";
 
                 for (Station Transfer : otherStations){
                     output += "\t" + Transfer.toString() + "\n";

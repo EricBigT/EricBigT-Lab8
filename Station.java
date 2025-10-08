@@ -6,9 +6,9 @@ public class Station{
     protected Station prevStation;
 
     public Station(String n, String c){
-        this.name = n;
-        this.color = c;
-        inService = false;
+        this.name = c;
+        this.color = n;
+        inService = true;
         next = null;
         prevStation = null;
 
@@ -72,8 +72,19 @@ public class Station{
     }
 
     public String toString(){
-        return "STATION "+ getName() + ": " + getColor() + "line, in service: " + isAvailable() + ", previous station: " + prevStation + 
-                ", next station: " + next;
+        String prevName = prevStation.getName();
+        String nextName = next.getName();
+
+        if (prevStation == null){
+            prevName = "none";
+        }
+        if (next == null){
+            nextName = "none";
+        }
+
+
+        return "STATION "+ getName() + ": " + getColor() + " line, in service: " + isAvailable() + ", previous station: " + prevName + 
+                ", next station: " + nextName;
         // "STATION Museum: pink line, in service: true, previous station: none, next station: Square";
     }
 }
