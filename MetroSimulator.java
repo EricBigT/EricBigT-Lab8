@@ -83,11 +83,11 @@ public class MetroSimulator{
 		woodley_park.connect(dupont_circle);
 		dupont_circle.connect(farragut_north);
 		farragut_north.connect(metro_center);
-		metro_center.addTransferStationNext(gallery_place);
 		metro_center.addTransferStationPrev(farragut_north);
+		metro_center.addTransferStationNext(gallery_place);
 		gallery_place.connect(judiciary_square);
-		judiciary_square.makeEnd();
 		woodley_park.makeEnd();
+		judiciary_square.makeEnd();
 		return woodley_park;
 	}
 
@@ -96,10 +96,9 @@ public class MetroSimulator{
 		s2.connect(s3);
 		metro_center.addTransferStationPrev(s3);
 		metro_center.addTransferStationNext(s4);
-		s3.connect(s4);
 		s4.connect(s5);
-		s5.makeEnd();
 		s1.makeEnd();
+		s5.makeEnd();
 
 		return s1;
 	}

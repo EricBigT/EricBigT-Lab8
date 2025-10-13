@@ -1,32 +1,24 @@
-public class EndStation extends Station{
+public class EndStation extends Station {
 
-    public EndStation(String s, String c){
-        super(s, c);
+    public EndStation(String color, String name) {
+        super(color, name);
     }
 
-    public void makeEnd(){
-        if (next != null){
+    public void makeEnd() {
+        // if one end is null, make both point to the non-null one
+        if (next != null && prevStation == null) {
             prevStation = next;
-        }
-        if (prevStation != null){
+        } else if (prevStation != null && next == null) {
             next = prevStation;
         }
     }
 
-    public String toString(){
-
-        String prevName = prevStation.getName();
-        String nextName = next.getName();
-
-        if (prevStation == null){
-            prevName = "none";
-        }
-        if (next == null){
-            nextName = "none";
-        }
-
-        return "ENDSTATION "+ getName() + ": " + getColor() + " line, in service: " + isAvailable() + ", previous station: " + prevName + 
-                ", next station: " + nextName;
-        // "ENDSTATION Museum: pink line, in service: true, previous station: Square, next station: Square"
+    @Override
+    public String toString() {
+        String prevName = (prevStation == null) ? "none" : prevStation.getName();
+        String nextName = (next == null) ? "none" : next.getName();
+        return "ENDSTATION " + name + ": " + color + " line, in service: " + inService
+                + ", previous station: " + prevName
+                + ", next station: " + nextName;
     }
 }
