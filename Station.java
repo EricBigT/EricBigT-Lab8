@@ -63,7 +63,7 @@ public class Station {
 
     @Override
     public boolean equals(Object o) {
-        if (o == this) {
+        if (o == this) { 
             return true;
         }
         if (!(o instanceof Station)){
@@ -103,7 +103,7 @@ private int tripLengthHelper(Station dest, HashSet<Station> visited) {
     if (next != null) {
         int d = next.tripLengthHelper(dest, visited); //recursive call 
         if (d >= 0){
-            min = Math.min(min, d + 1);
+            min = Math.min(min, d + 1); //record the shortest new distance
         }
     }
 
